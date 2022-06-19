@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="idosa.ico">
+    <title>AAP2 - Jogo da Velha</title>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+</head>
+<body id="conteiner">
+    <h1 id="titulo">Jogo da Velha</h1>
+    <div id="conteudo">
+        <div class="slash-box">
+        </div>
+        <div id="jogoVelha">
+            <div class="linhas" id="linha1">
+                <div class="quadrados" id="quadrado1"></div>
+                <div class="quadrados" id="quadrado2"></div>
+                <div class="quadrados" id="quadrado3"></div>
+            </div>
+            <div class="linhas" id="linha2">
+                <div class="quadrados" id="quadrado4"></div>
+                <div class="quadrados" id="quadrado5"></div>
+                <div class="quadrados" id="quadrado6"></div>
+            </div>
+            <div class="linhas" id="linha3">
+                <div class="quadrados" id="quadrado7"></div>
+                <div class="quadrados" id="quadrado8"></div>
+                <div class="quadrados" id="quadrado9"></div>
+            </div>
+        </div>
+    </div>
+    <div id="dialogo"></div>
+    <div id="botao"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".slash-box").hide();
+            let vez = 1;
+            let vencedor = "";
+            let qua1 = document.getElementById("quadrado1");
+            let qua2 = document.getElementById("quadrado2");
+            let qua3 = document.getElementById("quadrado3");
+            let qua4 = document.getElementById("quadrado4");
+            let qua5 = document.getElementById("quadrado5");
+            let qua6 = document.getElementById("quadrado6");
+            let qua7 = document.getElementById("quadrado7");
+            let qua8 = document.getElementById("quadrado8");
+            let qua9 = document.getElementById("quadrado9");
+
+            function quadradosIguais(a, b, c){
+                let quA = $("#quadrado" + a).html();
+                let quB = $("#quadrado" + b).html();
+                let quC = $("#quadrado" + c).html();
+                if ((quA === quB) && (quB === quC) && (quA !== "none" && quA !== "")){
+                    if (quA.indexOf("X") >= 0){vencedor = "1";}
+                    else{vencedor = "2";}
+                    return true;
+                }
+                else {return false;}
+            }
+
+            function reiniciar() {
+                    $("#botao").html("<br><button id='reiniciar'>Reiniciar</button>");
+                    $("#reiniciar").click(function () {
+                        $(".quadrados").empty();
+                        $("#dialogo").empty();
+                        $(".slash-box").empty();
+                        $(".slash-box").hide();
+                        $(".quadrados").on("click");
+                        $("#botao").empty();
+                        vez = 1;
+                        começar();
+                    })
+            }
+
+            function verificarFimDeJogo(){
+                if (quadradosIguais(1, 2, 3) || quadradosIguais(4, 5, 6) || quadradosIguais(7, 8, 9) ||
+                    quadradosIguais(1, 4, 7) || quadradosIguais(2, 5, 8) || quadradosIguais(3, 6, 9) ||
+                    quadradosIguais(1, 5, 9) || quadradosIguais(3, 5, 7)
+                    ){
+                    $("#dialogo").html("<h1 id='vencedor'>O jogador " + vencedor + " venceu!</h1>");
+                    $(".quadrados").off("click");
+                    reiniciar();
+                if (quadradosIguais(1, 2, 3)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"top-hor\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(4, 5, 6)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"middle-hor\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(7, 8, 9)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"bottom-hor\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(1, 4, 7)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"left-vert\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(2, 5, 8)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"center-vert\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(3, 6, 9)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"right-vert\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(1, 5, 9)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"top-bottom\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                if (quadradosIguais(3, 5, 7)){
+                    $(".slash-box").html("<div class=\"slash-off\" id=\"bottom-top\"></div>");
+                    jQuery(".slash-box").show();
+                }
+                }else {
+                    if (qua1.querySelector("#letras") !== null){
+                        if (qua2.querySelector("#letras") !== null){
+                            if (qua3.querySelector("#letras") !== null){
+                                if (qua4.querySelector("#letras") !== null){
+                                    if (qua5.querySelector("#letras") !== null){
+                                        if (qua6.querySelector("#letras") !== null){
+                                            if (qua7.querySelector("#letras") !== null){
+                                                if (qua8.querySelector("#letras") !== null){
+                                                    if (qua9.querySelector("#letras") !== null){
+                                                        $("#dialogo").html("<h1 id='vencedor'>Deu Veia</h1>");
+                                                        reiniciar();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            function começar() {
+                jQuery(".quadrados").click(function(){
+                let qu = $(this).html();
+                if(qu === "none" || qu === "") {
+                    if (vez === 1) {
+                        $(this).html("<h1 id='letras'>X</h1>");
+                        vez = 2;
+                    } else {
+                        $(this).html("<h1 id='letras'>O</h1>");
+                        vez = 1;
+                    }
+                    verificarFimDeJogo();
+                }
+                });
+            }
+            começar();
+        })
+    </script>
+</body>
+</html>

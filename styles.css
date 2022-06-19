@@ -1,0 +1,161 @@
+#conteiner{
+    height: 550px;
+    background: #2a2b2c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#conteudo{
+    height:303px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quadrados{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#letras{
+    font-family: "JetBrains Mono", monospace;
+    font-weight: normal;
+    color: whitesmoke;
+}
+
+#titulo{
+    font-family: "JetBrains Mono", monospace;
+    font-weight: normal;
+    color: aquamarine;
+    height: 100px;
+    font-size: 45px;
+}
+
+#dialogo{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#vencedor{
+    font-family: "JetBrains Mono", monospace;
+    font-weight: lighter;
+    color: aquamarine;
+}
+
+#jogoVelha{
+    width:303px;
+    height:303px;
+}
+
+.linhas{
+    height:100px;
+}
+
+#quadrado1, #quadrado2, #quadrado4, #quadrado5{
+    width:100px;
+    height:100%;
+    border-bottom:solid 1px;
+    border-right:solid 1px;
+    border-color: whitesmoke;
+    float:left;
+}
+
+#quadrado3, #quadrado6{
+    width:100px;
+    height:100%;
+    border-bottom:solid 1px;
+    border-color: whitesmoke;
+    float:left;
+}
+
+#quadrado7, #quadrado8{
+    width:100px;
+    height:100%;
+    border-right:solid 1px;
+    border-color: whitesmoke;
+    float:left;
+}
+
+#quadrado9{
+    width:100px;
+    height:100%;
+    border-color: whitesmoke;
+    float:left;
+}
+.slash-box {
+    display: flex;
+    margin: auto;
+    width: 303px;
+    height: 303px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.slash-off {
+    display: flex;
+    border-radius: 2px;
+    position: absolute;
+    width: 4px;
+    height: 303px;
+    background-color: #7FFFD4FF;
+    -webkit-box-shadow: 0 0 20px 1px black;
+}
+
+#top-bottom {
+    transform: rotate(-45deg) translate(106px,100px);
+}
+
+#bottom-top {
+    transform: rotate(225deg) translate(-106px,103px);
+}
+
+#center-vert {
+    height: 260px;
+    transform: rotate(0deg) translate(150px,20px);
+}
+
+#middle-hor {
+    height: 260px;
+    transform: rotate(90deg) translate(20px,-151px);
+}
+
+#left-vert {
+    height: 260px;
+    transform: rotate(0deg) translate(48px,20px);
+}
+
+#right-vert {
+    height: 260px;
+    transform: rotate(0deg) translate(250px,20px);
+}
+
+#top-hor {
+    height: 260px;
+    transform: rotate(90deg) translate(-80px,-150px);
+}
+
+#bottom-hor {
+    height: 260px;
+    transform: rotate(90deg) translate(120px,-150px);
+}
+
+#reiniciar{
+    font-family: "JetBrains Mono", monospace;
+    font-weight: normal;
+    color: black;
+    padding: 7px 7px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+}
